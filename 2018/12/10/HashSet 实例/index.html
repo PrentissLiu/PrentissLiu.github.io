@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="#2018-12-10HashSet的一个应用实例，笔试题： 对于一个字符串，请设计一个高效算法，找到第一次重复出现的字符。给定一个字符串(不一定全为字母)A及它的长度n。请返回第一个重复出现的字符。保证字符串中有重复字符，字符串的长度小于等于500。测试样例：“hjhfjdshfj”,10返回：y 12345678910111213141516public class Soluction&amp;#12">
+  <meta name="description" content="HashSet的一个应用实例，笔试题： 对于一个字符串，请设计一个高效算法，找到第一次重复出现的字符。给定一个字符串(不一定全为字母)A及它的长度n。请返回第一个重复出现的字符。保证字符串中有重复字符，字符串的长度小于等于500。测试样例：“hjhfjdshfj”,10返回：y 12345678910111213141516public class Soluction&amp;#123;	public s">
 <meta name="keywords" content="hexo,HashSet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashSet的应用实例">
 <meta property="og:url" content="http://yoursite.com/2018/12/10/HashSet 实例/index.html">
 <meta property="og:site_name" content="Prentiss的小屋">
-<meta property="og:description" content="#2018-12-10HashSet的一个应用实例，笔试题： 对于一个字符串，请设计一个高效算法，找到第一次重复出现的字符。给定一个字符串(不一定全为字母)A及它的长度n。请返回第一个重复出现的字符。保证字符串中有重复字符，字符串的长度小于等于500。测试样例：“hjhfjdshfj”,10返回：y 12345678910111213141516public class Soluction&amp;#12">
+<meta property="og:description" content="HashSet的一个应用实例，笔试题： 对于一个字符串，请设计一个高效算法，找到第一次重复出现的字符。给定一个字符串(不一定全为字母)A及它的长度n。请返回第一个重复出现的字符。保证字符串中有重复字符，字符串的长度小于等于500。测试样例：“hjhfjdshfj”,10返回：y 12345678910111213141516public class Soluction&amp;#123;	public s">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-11T02:22:52.759Z">
+<meta property="og:updated_time" content="2018-12-11T02:23:59.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashSet的应用实例">
-<meta name="twitter:description" content="#2018-12-10HashSet的一个应用实例，笔试题： 对于一个字符串，请设计一个高效算法，找到第一次重复出现的字符。给定一个字符串(不一定全为字母)A及它的长度n。请返回第一个重复出现的字符。保证字符串中有重复字符，字符串的长度小于等于500。测试样例：“hjhfjdshfj”,10返回：y 12345678910111213141516public class Soluction&amp;#12">
+<meta name="twitter:description" content="HashSet的一个应用实例，笔试题： 对于一个字符串，请设计一个高效算法，找到第一次重复出现的字符。给定一个字符串(不一定全为字母)A及它的长度n。请返回第一个重复出现的字符。保证字符串中有重复字符，字符串的长度小于等于500。测试样例：“hjhfjdshfj”,10返回：y 12345678910111213141516public class Soluction&amp;#123;	public s">
 
 
 
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-12-11 10:22:52" itemprop="dateModified" datetime="2018-12-11T10:22:52+08:00">2018-12-11</time>
+                <time title="修改时间：2018-12-11 10:23:59" itemprop="dateModified" datetime="2018-12-11T10:23:59+08:00">2018-12-11</time>
               
             
           </span>
@@ -466,7 +466,7 @@
       
 
       
-        <p>#2018-12-10<br>HashSet的一个应用实例，笔试题：</p>
+        <p>HashSet的一个应用实例，笔试题：</p>
 <p>对于一个字符串，请设计一个高效算法，找到第一次重复出现的字符。<br>给定一个字符串(不一定全为字母)A及它的长度n。请返回第一个重复出现的字符。保证字符串中有重复字符，字符串的长度小于等于500。<br>测试样例：<br>“hjhfjdshfj”,10<br>返回：y</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Soluction</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">char</span> <span class="title">findFirstRepeat</span><span class="params">(String A, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">		<span class="keyword">char</span> [] a = A.toCharArry();</span><br><span class="line">		HashSet hs = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!hs.add(a[i]))&#123;</span><br><span class="line">				<span class="keyword">return</span> a[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		System.out.println(findFirstRepeat(<span class="string">"asdfsfsd"</span>,<span class="number">11</span>))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
