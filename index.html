@@ -1,23 +1,2673 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
-{% block title %}{{ title }}{% if theme.index_with_subtitle and subtitle %} – {{ subtitle }}{% endif %}{% endblock %}
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
 
-{% block content %}
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '6.6.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Prentiss的小屋">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Prentiss的小屋">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Prentiss">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Prentiss的小屋</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Prentiss的小屋</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home menu-item-active">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br &#x2F;&gt;首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-tags&quot;&gt;&lt;&#x2F;i&gt; &lt;br &#x2F;&gt;标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-th&quot;&gt;&lt;&#x2F;i&gt; &lt;br &#x2F;&gt;分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-archive&quot;&gt;&lt;&#x2F;i&gt; &lt;br &#x2F;&gt;归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/31/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prentiss">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/prentiss_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prentiss的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/12/31/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">2020 年终总结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-12-31 09:36:59" itemprop="dateCreated datePublished" datetime="2020-12-31T09:36:59+08:00">2020-12-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-12-29 09:45:05" itemprop="dateModified" datetime="2020-12-29T09:45:05+08:00">2020-12-29</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">年终总结</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/12/31/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2020/12/31/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/12/31/2020%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="2020 年终总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>新年跨年，今年仅两件事：</p>
+<ol>
+<li>Master. 上岸.</li>
+<li>不要忘记第一条.</li>
+</ol>
+<p>2020-12-31</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/2019%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93-2010%E5%B9%B4%E4%BB%A3%E7%9A%84%E7%BB%88%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prentiss">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/prentiss_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prentiss的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/31/2019%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93-2010%E5%B9%B4%E4%BB%A3%E7%9A%84%E7%BB%88%E7%BB%93/" class="post-title-link" itemprop="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">2019 年终总结 | 2010年代的终结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-31 23:50:00 / 修改时间：21:56:22" itemprop="dateCreated datePublished" datetime="2019-12-31T23:50:00+08:00">2019-12-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">年终总结</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/31/2019%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93-2010%E5%B9%B4%E4%BB%A3%E7%9A%84%E7%BB%88%E7%BB%93/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/12/31/2019%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93-2010%E5%B9%B4%E4%BB%A3%E7%9A%84%E7%BB%88%E7%BB%93/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/31/2019%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93-2010%E5%B9%B4%E4%BB%A3%E7%9A%84%E7%BB%88%E7%BB%93/" class="leancloud_visitors" data-flag-title="2019 年终总结 | 2010年代的终结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <meta name="referrer" content="no-referrer" />
+
+<p>快要到年底的时候，网络上有个图令人印象深刻：「时间或许是个人类定义的虚拟单位，年份本来意义不大」。好像还没有准备好似的，2010s时代过去了。</p>
+<p>2019的一年时间与往些日子没有什么不同。印象里2010年的春天照着父亲的样子第一次打开日志本写下第一行字至今，难能想到已经十个春秋过去。2012年秋季的运动会看台；2013年小剧场流泪相拥；2014年的印象里星星上特别的人；2016年无可退避的日子以及2017年前的自我封闭到后来如今的我。</p>
+<p>谁能想到十年前的我比如今小十岁呢。<br>时间。</p>
+<p>十年前我向来以为我是能够超越时代的，恐怕远远没有。十年前我一向意外应以先验为标准，后来没有了标准。十年前我以为父母年轻我亦长大，怕难以言说。还好这十年前我对一切都有好奇心和热爱，如今虽是仍打心底里不喜经验的，也带着一份好奇活着罢了。</p>
+<p>想想十年前的我半数的梦想也都有实现，幸福随着年岁增长和被束缚的降低也得偿所愿。kindle念想着五年如今看书也百本以上，MacBook和搭起的服务器不知道让后互联网时代更有多么惬意；也在夜里坐着轮渡看星星，岸滩边赤脚摸鱼，带着合成器玩两段小曲儿，画五岁的小雪人儿。</p>
+<p>这一年里唯一值得提及的恐怕只有看了几本书了。豆瓣又到了一年一度晒年终阅读量的日子。今年倒是最近三两年里数量最多的，160有余。今年看的诗要算博尔赫斯为首，其他的也就各类社会学相关读物翻翻长着见识。何伟、阮义忠、蔡定剑、费孝通真的是宝贝。还有休谟那本人类理解研究，真是妙。</p>
+<p>这一年格陵兰岛冰盖融化、图瓦卢计划修建“人工岛”、IUCN红色名录突破10万物种关口、北极圈起火、巴西亚马逊雨林大火，环境和人的关系依旧严峻。工业肉类生产消费增加，全球肉类产业的扩张，食品消费升级。公共空间人脸识别、互联网隐私监控和隐私泄漏以及基因编辑婴儿的诞生活像黑镜里魔幻现实。996工作制普遍化、日益失衡的劳资关系，后工业时代来临，乌·贝克笔下的“风险社会”正在成为现实：工作状态越来越不稳定，越发面临劳动得不到变现的处境。</p>
+<p>更私人的处境来看，批判活成一个不带脑子的傀儡。知识仍是荒谬的，世界仍是资源的抢掠罢了。每一个时代存在，和自己也可以无一关系，一股低沉抑郁的气息迎面扑来。上半年抽着时间看了不少的书，焦虑的时候抱着Kindle是常有的事情。下半年跟着小靳的足迹开始着手下一个阶段生活的准备了。</p>
+<p>可也不无是坏事。大佬也说：「拼一拼，单车变摩托。」阿童也有提到：「那里写着『胜』字的！」 母校的声音：「追求卓越」。村长也一直在说：「自信&amp;耐心」。哪怕我的小水瓶儿都在告诉我：「YES」。</p>
+<p>另外这一年里朋友们大多也都考研毕业。愿你们成功上岸。</p>
+<p>2019-12-31凌晨</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/2019-%E4%B8%8D%E5%86%8D%E5%81%87%E8%A3%85%E8%AF%BB%E7%82%B9%E4%B9%A6%20-%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prentiss">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/prentiss_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prentiss的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/31/2019-%E4%B8%8D%E5%86%8D%E5%81%87%E8%A3%85%E8%AF%BB%E7%82%B9%E4%B9%A6%20-%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">2019 不再假装读点书 | 阅读总结 </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-12-31 20:06:42 / 修改时间：20:34:45" itemprop="dateCreated datePublished" datetime="2019-12-31T20:06:42+08:00">2019-12-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">年终总结</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/12/31/2019-%E4%B8%8D%E5%86%8D%E5%81%87%E8%A3%85%E8%AF%BB%E7%82%B9%E4%B9%A6%20-%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2019/12/31/2019-%E4%B8%8D%E5%86%8D%E5%81%87%E8%A3%85%E8%AF%BB%E7%82%B9%E4%B9%A6%20-%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/12/31/2019-%E4%B8%8D%E5%86%8D%E5%81%87%E8%A3%85%E8%AF%BB%E7%82%B9%E4%B9%A6%20-%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="2019 不再假装读点书 | 阅读总结 ">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <meta name="referrer" content="no-referrer" />
+
+<p>2019已读的书单留在这里，备份与记录之用。<br>顺序按照阅读顺序，没有规律。</p>
+<ul>
+<li>孤独六讲</li>
+<li>先放一把火<pre><code>  何帆的书，拿来当书单不能更好了。</code></pre>
+</li>
+<li>写作这回事</li>
+<li>海风中失落的血色馈赠</li>
+<li>民主是一种现代生活<pre><code>  真是醍醐灌顶。</code></pre>
+</li>
+<li>荒原狼</li>
+<li>顿悟</li>
+<li>追寻生命的意义</li>
+<li>真希望我20几岁就知道的事</li>
+<li>美好的七年</li>
+<li>新千年文学备忘录</li>
+<li>寄小读者</li>
+<li>看不见的城市</li>
+<li>规训与惩罚 </li>
+<li>动物农场</li>
+<li>一九八四</li>
+<li>北野武的小酒馆</li>
+<li>初夏荷花时期的爱情</li>
+<li>城堡<pre><code>  「我真的看过吗？」</code></pre>
+</li>
+<li>幸福课</li>
+<li>纵乐的困惑：明代的商业与文化</li>
+<li>深思与醒悟</li>
+<li>谈修养 //朱光潜</li>
+<li>星新一微型小说选<pre><code>  看书，也看介绍书的人。</code></pre>
+</li>
+<li>迦陵说词讲稿</li>
+<li>身份与差异 //高华<pre><code>  有的书还是繁体字版本的舒服。</code></pre>
+</li>
+<li>The Little World of Liz Climo</li>
+<li>学习这回事</li>
+<li>观念的水位</li>
+<li>阿狸·梦之城堡</li>
+<li>把时间当作朋友</li>
+<li>生活的艺术</li>
+<li>定西孤儿院纪事<pre><code>  太惨了。</code></pre>
+</li>
+<li>叠加体验：用互联网思维设计商业模式</li>
+<li>Animal Farm</li>
+<li>The Book-Hunter at Home</li>
+<li>走出抑郁</li>
+<li>情绪是什么</li>
+<li>叫魂：1768年中国妖术大恐慌</li>
+<li>堕落论</li>
+<li>观点 //毛姆</li>
+<li>最后的耍猴人<pre><code>  后来大多的人都被现代化裹挟着远去了。诶？怎么一股怪味。</code></pre>
+</li>
+<li>乡土中国</li>
+<li>通往奴役之路</li>
+<li>江城<pre><code>  何伟的书有一本看一本，都来！</code></pre>
+</li>
+<li>草木春秋</li>
+<li>知味集</li>
+<li>七日谈</li>
+<li>你今天真好看</li>
+<li>南强北调</li>
+<li>亲密关系（第六版）</li>
+<li>The World of Wall Street</li>
+<li>The Catcher in the Rye</li>
+<li>The Old Man and the Sea</li>
+<li>South of the Border,West of the Sun</li>
+<li>Hear the Wind Sing</li>
+<li>Norwegian Wood</li>
+<li>What I Talk About When I Talk About Running</li>
+<li>Flipped </li>
+<li>哲学的故事</li>
+<li>Are You There God? It’s Me, Margaret</li>
+<li>The Alchemist</li>
+<li>鱼丽之宴</li>
+<li>看不见的城市</li>
+<li>文明的冲突与世界秩序的重建</li>
+<li>我纷纷的情欲</li>
+<li>中国现代过国家的起源</li>
+<li>窗边的小豆豆</li>
+<li>汉语的本质和历史</li>
+<li>逝年如水：周有光百年口述</li>
+<li>时代的精神状况<pre><code>  妙啊。</code></pre>
+</li>
+<li>西班牙三棵树</li>
+<li>即兴判断</li>
+<li>温莎墓园日记</li>
+<li>哥伦比亚的倒影</li>
+<li>伊凡·伊里奇之死</li>
+<li>神经质人格</li>
+<li>身份的焦虑</li>
+<li>精神障碍诊断与统计手册（DSM-5）</li>
+<li>每个人心中都有一个被低估的自我</li>
+<li>爱与生的苦恼</li>
+<li>事实：用数据思考，避免情绪化决策</li>
+<li>走出恐惧</li>
+<li>正午的黑暗</li>
+<li>富人思维</li>
+<li>不朽 //昆德拉</li>
+<li>爱的博弈</li>
+<li>人类沟通语用学<pre><code>  「试图解决问题」还有可能让情况恶化。</code></pre>
+</li>
+<li>假性亲密关系</li>
+<li>我的野生动物朋友</li>
+<li>寻路中国<pre><code>  接着吹何伟的书。</code></pre>
+</li>
+<li>文化与无政府状态</li>
+<li>存在主义简论</li>
+<li>谈心</li>
+<li>给一个青年诗人的十封信</li>
+<li>树犹如此</li>
+<li>一百个人的十年<pre><code>  现代中国不能忘了过去。</code></pre>
+</li>
+<li>考古的故事</li>
+<li>精神焦虑者的自救</li>
+<li>人生的意义 //特里·伊格尔顿</li>
+<li>时间的礼物</li>
+<li>人类理解研究</li>
+<li>分裂的自我</li>
+<li>方思琪的初恋乐园</li>
+<li>怀疑的时代需要怎样的信仰</li>
+<li>我怎样毁了我的一生</li>
+<li>可操作的民主</li>
+<li>春天责备</li>
+<li>此生未完成</li>
+<li>人生 //路遥</li>
+<li>狂热分子</li>
+<li>活出意义来 //维克多·弗兰克</li>
+<li>双相情感障碍</li>
+<li>早晨从中午开始</li>
+<li>Nothing to Envy</li>
+<li>写出我心</li>
+<li>中国十亿万城民</li>
+<li>在他乡</li>
+<li>草叶集</li>
+<li>Crippled America </li>
+<li>医学伦理-牛津通识读本</li>
+<li>蜥蜴脑法则</li>
+<li>认知天性</li>
+<li>零秒思考</li>
+<li>被讨厌的语气</li>
+<li>博尔赫斯诗选</li>
+<li>经验的疆界</li>
+<li>企鹅与其他海鸟</li>
+<li>最底层的10亿人</li>
+<li>Beyond Feelings</li>
+<li>The Moon and Sixpence</li>
+<li>诗艺</li>
+<li>国王 武士 祭司 诗人</li>
+<li>为什么学生不喜欢上学<pre><code>  除了书名太俗没有别的缺点。</code></pre>
+</li>
+<li>How Google Works</li>
+<li>养蜂人</li>
+<li>思考，快与慢</li>
+<li>意识光谱</li>
+<li>文艺复兴的故事 01/02</li>
+<li>社会学的想象力</li>
+<li>写给无神论者</li>
+<li>现代艺术150年</li>
+<li>性别之伤与存在之痛</li>
+<li>中毒的父母</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/31/2018%20%E5%81%87%E8%A3%85%E7%9C%8B%E4%BA%86%E4%B8%80%E4%BA%9B%E4%B9%A6%20%7C%20%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prentiss">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/prentiss_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prentiss的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/31/2018%20%E5%81%87%E8%A3%85%E7%9C%8B%E4%BA%86%E4%B8%80%E4%BA%9B%E4%B9%A6%20%7C%20%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">2018 假装读了一些书 | 阅读总结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-31 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-31T00:00:00+08:00">2018-12-31</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-01-19 14:04:03" itemprop="dateModified" datetime="2021-01-19T14:04:03+08:00">2021-01-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">年终总结</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/31/2018%20%E5%81%87%E8%A3%85%E7%9C%8B%E4%BA%86%E4%B8%80%E4%BA%9B%E4%B9%A6%20%7C%20%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/31/2018%20%E5%81%87%E8%A3%85%E7%9C%8B%E4%BA%86%E4%B8%80%E4%BA%9B%E4%B9%A6%20%7C%20%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/31/2018%20%E5%81%87%E8%A3%85%E7%9C%8B%E4%BA%86%E4%B8%80%E4%BA%9B%E4%B9%A6%20%7C%20%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="2018 假装读了一些书 | 阅读总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <meta name="referrer" content="no-referrer" />
+
+
+
+
+<p>今年读不少书，总结了一下才觉得真有些宝贝。这一年里消遣的书比正经的啃读文本多不少。不过原生家庭却是看的不少，全程只当是自救。而这里都是些读起来干货「有用」远大于「消遣」的书。</p>
+<p>以下的这些书都是那个时候从已经阅读书里面摘取得到的。</p>
+<h2 id="禅与摩托车维修艺术"><a href="#禅与摩托车维修艺术" class="headerlink" title="禅与摩托车维修艺术"></a>禅与摩托车维修艺术</h2><p><img src="https://img9.doubanio.com/view/subject/l/public/s6927676.jpg"></p>
+<p>书中作者父子二人的旅行经历看上去像是小说，有些柏拉图《对话录》的意思。作者从「为什么按照说明书的指示坏了的车不能被修好」慢慢引入，从「说明书」来认识发动机和「观察」两个渠道认识同一件事物，到后面谈到「二元论」和「良质和物」，才发觉自己的父亲从小就是个伟大的人。</p>
+<h2 id="爱的五种能力"><a href="#爱的五种能力" class="headerlink" title="爱的五种能力"></a>爱的五种能力</h2><p><img src="https://img9.doubanio.com/view/subject/l/public/s25807205.jpg"></p>
+<p>这本书看了之后大惊，爱的三个层次（满足自己的需求/自以为的对方的需求/满足对方的需求）这本书里醍醐灌顶。不过书里说的是好，一个人实践还是有些难度的，毕竟模拟成两个人的大脑加上狗粮不如考虑考虑「逃避自由」</p>
+<h2 id="逃避自由"><a href="#逃避自由" class="headerlink" title="逃避自由"></a>逃避自由</h2><p><img src="https://img9.doubanio.com/view/subject/l/public/s28242755.jpg"></p>
+<p>「自由对现代人的意义，及现代人为什么和如何试图逃避自由。」</p>
+<h2 id="想象的共同体"><a href="#想象的共同体" class="headerlink" title="想象的共同体"></a>想象的共同体</h2><p><img src="https://img9.doubanio.com/view/subject/l/public/s1323364.jpg"></p>
+<p>民族国家这一套理论的一套范式。印象最深的把不是眼前我们熟识的印象深刻的想象的共同体到底是不是一种虚无？为什么共同的想象有这么大的内驱力量？魔幻现实主义思考2.0更新版。</p>
+<h2 id="切尔诺贝利的悲鸣"><a href="#切尔诺贝利的悲鸣" class="headerlink" title="切尔诺贝利的悲鸣"></a>切尔诺贝利的悲鸣</h2><p><img src="https://img2.doubanio.com/view/subject/l/public/s28323992.jpg"></p>
+<p>「太惨了。」大半夜一口气看完，本是个不怎么流泪的汉子，眼眶湿润。「人民在体制和灾难的痛苦中寻找诗意。」每个容易被人忘记的历史，掀开则是不能忘记的痛。恰好人类的智慧在于还有「不可忘记的痛」。</p>
+<h2 id="小狗钱钱"><a href="#小狗钱钱" class="headerlink" title="小狗钱钱"></a>小狗钱钱</h2><p><img src="https://img2.doubanio.com/view/subject/l/public/s6530133.jpg"></p>
+<p>矫正消费观。</p>
+<h2 id="非暴力沟通"><a href="#非暴力沟通" class="headerlink" title="非暴力沟通"></a>非暴力沟通</h2><p><img src="https://img9.doubanio.com/view/subject/l/public/s28423534.jpg"></p>
+<p>「非暴力意味着让爱融入生活。让尊重、理解、欣赏、感激、慈悲和友情，而非自私自利、贪婪、憎恨、偏见、怀疑和敌意，来主导生活。」区分命令和请求；清楚地告诉对方，你希望对方如何做；指责对方和满足双方的需要如何做；区分感受和想法…这本书在启发我们关注需求和感受，采用更温和而有效的沟通方式生活。</p>
+<h2 id="这不是你的错"><a href="#这不是你的错" class="headerlink" title="这不是你的错"></a>这不是你的错</h2><p><img src="https://img9.doubanio.com/view/subject/l/public/s29515224.jpg"></p>
+<p>原生家庭的分析真是棒。「外界的都不能瓦解我，只有自愈。」说到这儿，才觉得有个不被轻易打破的内核和反洗脑的本能真是开心。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prentiss">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/prentiss_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prentiss的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">2018 年终总结</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-31 00:00:00 / 修改时间：21:05:58" itemprop="dateCreated datePublished" datetime="2018-12-31T00:00:00+08:00">2018-12-31</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">年终总结</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="leancloud_visitors" data-flag-title="2018 年终总结">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>十二月的时候不经意朋友的一句提醒，才知道2019就快到了。这一年过的甚是简单，可活着却不算轻快。这一年有个网络用语「人间不值得」；生命的本质是荒谬，语言的特质是符号。理想和现实差距过大时，才明白世界有他的运行逻辑。适度改变理想，对精神健康有益。</p>
+<p>十月在南京，童童大气和我笑着说「你这纠结的都不应该算事儿」，醍醐灌顶。人活着怕是就要有如此大气。能有所热爱，能有执着的，怎不应当是自我追求和实现。花些时间在凡俗的似是而非和毫无依据的纷扰，到头来不免有空虚和不合逻辑的困扰。</p>
+<p>朋友在信里安慰道「爱情诚可贵，既然能有一段奋不顾身的投入，也算无憾。」青春甚好，怎样过都不算浪掷。后来愈发感到对亲情的眷念。也忘不了两双筷子窃喜相对，团聚时光入味锅中，父母与我是更重要的人，他们一向是在支持与鼓励，是有过人智慧的人。世间所有的爱指向聚合，除却父母之爱，分别是最终的。愈加心酸。</p>
+<p>今年没看过多少书，也没去太多地方，可后半年也是由内而外的满足。北京天津石家庄武汉南京满足了去年「探索新世界」挣扎在象牙塔的孩子。后半年的日子更可以精进技能而不受外物纷扰。看过的三两本书从陈丹青到佛洛姆和武志红；从彼得林奇和西格尔的经典书到家庭创伤的书单，鲜明的主题阅读贯穿始终。有了新的实践总是好的，结合着前人的经验而不断内化，不得不说在一整年里对现实有了更贴切而自洽的理解。</p>
+<p>这一年从空灵的Guido Negraszus慢慢随着生活的节奏过渡到摇滚为主，Birdy和A Rock to the Moon填充了面对浩渺夜空思念的所有幻想。Alternative也好喜欢，恰巧诠释虚妄而又魔幻的现实。快到年底的时候一张Frank的专辑从头到尾听下来又一次重新理解音乐。</p>
+<p>也感激吐槽日常的伙伴们，喜欢和雨坤吐槽有趣和无趣的事情；喜欢和雪琦相互教育着荒谬的生活；喜欢和春江找个安静的角落聊不同领域有意思的事情；喜欢和旭辉敲着代码商量着以后的事情。</p>
+<p>这一年成长许多，<del>也要感谢阿崔。</del>存在，我们赋予它意义。尚且「意欲作为万物的动因，认识力，或者说智力只不过是实现意欲的手段。」后来朋友说能做到以己度人，自己的内心还很是温暖的。也许明年想做一个智力多余的人，不屈从意欲的人，做一个可以自发的，无目的的认识这一世界的人。</p>
+<p>2018年，互联网风口偃旗息鼓，币圈和共享圈凉了不少，互联网企业大幅裁员，考研人数再创新高，又是一次寒冬。「凛冬将至，所有狂暴的欢愉，都将以同样的狂暴结局。」冬天也很美，也觉得这一年没有后悔，这就是生活呐。</p>
+<p>2018-12-31</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/10/HashSet%20%E5%AE%9E%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prentiss">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/prentiss_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prentiss的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/10/HashSet%20%E5%AE%9E%E4%BE%8B/" class="post-title-link" itemprop="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">HashSet的应用实例</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-10 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-10T00:00:00+08:00">2018-12-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-31 19:15:06" itemprop="dateModified" datetime="2019-12-31T19:15:06+08:00">2019-12-31</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/10/HashSet%20%E5%AE%9E%E4%BE%8B/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/10/HashSet%20%E5%AE%9E%E4%BE%8B/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/10/HashSet%20%E5%AE%9E%E4%BE%8B/" class="leancloud_visitors" data-flag-title="HashSet的应用实例">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <meta name="referrer" content="no-referrer" />
+
+<p>HashSet的一个应用实例，笔试题：</p>
+<p>对于一个字符串，请设计一个高效算法，找到第一次重复出现的字符。<br>给定一个字符串(不一定全为字母)A及它的长度n。请返回第一个重复出现的字符。保证字符串中有重复字符，字符串的长度小于等于500。<br>测试样例：<br>“hjhfjdshfj”,10<br>返回：y</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Soluction</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">char</span> <span class="title">findFirstRepeat</span><span class="params">(String A, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">		<span class="keyword">char</span> [] a = A.toCharArry();</span><br><span class="line">		HashSet hs = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!hs.add(a[i]))&#123;</span><br><span class="line">				<span class="keyword">return</span> a[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		System.out.println(findFirstRepeat(<span class="string">&quot;asdfsfsd&quot;</span>,<span class="number">11</span>))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/07/2018-12-07%20%E5%9B%BE%E5%BA%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prentiss">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/prentiss_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prentiss的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/07/2018-12-07%20%E5%9B%BE%E5%BA%8A/" class="post-title-link" itemprop="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">2018-12-07 图床的决定</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-07T00:00:00+08:00">2018-12-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-01-19 14:13:45" itemprop="dateModified" datetime="2021-01-19T14:13:45+08:00">2021-01-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%97%A5%E5%B8%B8%E6%8A%98%E8%85%BE/" itemprop="url" rel="index"><span itemprop="name">日常折腾</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/07/2018-12-07%20%E5%9B%BE%E5%BA%8A/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/07/2018-12-07%20%E5%9B%BE%E5%BA%8A/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/07/2018-12-07%20%E5%9B%BE%E5%BA%8A/" class="leancloud_visitors" data-flag-title="2018-12-07 图床的决定">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <meta name="referrer" content="no-referrer" />
+
+
+<p>一开始是打算使用七牛云的图床的，后来发现2018年8月开始七牛云域名变成30天的测试域名了。这个坑显然不能入啊</p>
+<p>不过Mweb可以图片直接上传到图床里，这很棒棒啊</p>
+<p>可以直接用七牛云上传诶<br>但是似乎必须要有个域名才可以</p>
+<h2 id="考虑使用新浪图床"><a href="#考虑使用新浪图床" class="headerlink" title="考虑使用新浪图床"></a>考虑使用新浪图床</h2><p><a target="_blank" rel="noopener" href="https://github.com/J3n5en/sinaPicHostingApi">https://github.com/J3n5en/sinaPicHostingApi</a></p>
+<p>这里有个超棒的上传工具</p>
+<p>配置的过程如下</p>
+<ol>
+<li><p><code>git clone https://github.com/J3n5en/sinaPicHostingApi.git</code>克隆项目</p>
+</li>
+<li><p><code>yarn</code>安装依赖（电脑上没有yarn，又下载安装了一下</p>
+</li>
+<li><p>修改<code>config.json</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    &#123;</span><br><span class="line">	&quot;auth&quot;: &#123;</span><br><span class="line">		&quot;username&quot;: &quot;&quot;, &#x2F;&#x2F; 新浪账号</span><br><span class="line">		&quot;password&quot;: &quot;&quot; &#x2F;&#x2F; 新浪密码</span><br><span class="line">	&#125;,</span><br><span class="line">	&quot;port&quot;: 8088,   &#x2F;&#x2F; api监听端口</span><br><span class="line">	&quot;url&quot;: &quot;&#x2F;upload&quot;,  &#x2F;&#x2F;api url</span><br><span class="line">	&quot;default&quot;: &#123;</span><br><span class="line">		&quot;protocol&quot;: &quot;https&quot;,  &#x2F;&#x2F; 默认的协议 [&#39;http&#39;,&#39;https&#39;]</span><br><span class="line">		&quot;size&quot;: &quot;large&quot; &#x2F;&#x2F; 默认的图片大小&#123;&#39;large&#39;:&#39;原图&#39;,&#39;mw690&#39;:&#39;中等尺寸&#39;:&#39;thumbnail&#39;:&#39;缩略图&#39;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><code>node index.js</code>运行</p>
+</li>
+<li><p>Mweb图床上面设置就可以了。 </p>
+</li>
+</ol>
+<ol start="6">
+<li><code>Command + E</code>打开外部模式</li>
+</ol>
+<p>插入的图片自动可以上传到微博图床，哇棒耶。</p>
+<hr>
+<p><a target="_blank" rel="noopener" href="https://sspai.com/post/43598">https://sspai.com/post/43598</a><br>一篇很好的文章</p>
+<hr>
+<h2 id="更新-2021-01-19"><a href="#更新-2021-01-19" class="headerlink" title="更新 2021-01-19"></a>更新 2021-01-19</h2><p>现在用GitHub做图床了！</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/Hello-The-First-Post/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prentiss">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/prentiss_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prentiss的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/06/Hello-The-First-Post/" class="post-title-link" itemprop="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">Hello The First Post</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-06 22:27:17" itemprop="dateCreated datePublished" datetime="2018-12-06T22:27:17+08:00">2018-12-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-12-07 11:07:32" itemprop="dateModified" datetime="2018-12-07T11:07:32+08:00">2018-12-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%88%91%E6%BB%B4%E6%97%A5%E5%B8%B8/" itemprop="url" rel="index"><span itemprop="name">我滴日常</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/06/Hello-The-First-Post/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/06/Hello-The-First-Post/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/06/Hello-The-First-Post/" class="leancloud_visitors" data-flag-title="Hello The First Post">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是第一篇博客文章(/ω＼)<br>想起上一次搭博客还是在高中的时候，WordPress超好玩的！如今用Markdown感觉真的不错hhh</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/hexo%E5%8F%91%E5%B8%83blog%E6%96%87%E7%AB%A0%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Prentiss">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/prentiss_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prentiss的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2018/12/06/hexo%E5%8F%91%E5%B8%83blog%E6%96%87%E7%AB%A0%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="post-title-link" itemprop="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">Hexo发布blog文章常用快捷键</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-12-06 14:32:44" itemprop="dateCreated datePublished" datetime="2018-12-06T14:32:44+08:00">2018-12-06</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-12-31 18:52:27" itemprop="dateModified" datetime="2019-12-31T18:52:27+08:00">2019-12-31</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/06/hexo%E5%8F%91%E5%B8%83blog%E6%96%87%E7%AB%A0%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/12/06/hexo%E5%8F%91%E5%B8%83blog%E6%96%87%E7%AB%A0%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/12/06/hexo%E5%8F%91%E5%B8%83blog%E6%96%87%E7%AB%A0%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="leancloud_visitors" data-flag-title="Hexo发布blog文章常用快捷键">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="发布一篇新的博文"><a href="#发布一篇新的博文" class="headerlink" title="发布一篇新的博文"></a>发布一篇新的博文</h2><p><code>hexo new &quot;hexo发布blog文章常用快捷键&quot;</code><br>INFO  Created: ~/Desktop/123/hexo-prentiss/source/_posts/hexo发布blog文章常用快捷键.md</p>
+<h2 id="三个键发布新的文章"><a href="#三个键发布新的文章" class="headerlink" title="三个键发布新的文章"></a>三个键发布新的文章</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br><span class="line"></span><br><span class="line">$ hexo g</span><br><span class="line"></span><br><span class="line">$ hexo s</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>P.S.多日不见，原来可以正常使用的图床如今也出现了问题。不如考试之后择日再鼓弄鼓弄吧。</p>
+<h2 id="日常常用的页面操作小结："><a href="#日常常用的页面操作小结：" class="headerlink" title="日常常用的页面操作小结："></a>日常常用的页面操作小结：</h2><p>生成页面，启动服务的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<p>生成静态页面，也可以写作 hexo g</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>执行配置命令 hexo d也可以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy </span><br></pre></td></tr></table></figure>
+<p>打开Github也可以看到push上去的文件啦 神奇hhh</p>
+<p>运行服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>hexo deploy完成之后就可以在浏览器打开网址<br><a target="_blank" rel="noopener" href="https://prentissliu.github.io/">https://prentissliu.github.io</a><br>或者在本地打开<br><a href="http://localhost:4000（当然是要在本地先运行的）">http://localhost:4000（当然是要在本地先运行的）</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+  
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+
+          </div>
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/prentiss_avatar.png"
+                alt="Prentiss" />
+            
+              <p class="site-author-name" itemprop="name">Prentiss</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/%20%7C%7C%20archive">
+                
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:lqyyxwy@gmail.com" title="E-Mail &amp;rarr; mailto:lqyyxwy@gmail.com" rel="noopener" target="_blank">&lt;i class&#x3D;&quot;fa fa-fw fa-envelope&quot;&gt;&lt;&#x2F;i&gt;E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 – <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Prentiss</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v5.3.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.6.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.6.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.6.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.6.0"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.6.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'NrTJIhySTK8ExpFSRePvtUIg-gzGzoHsz',
+        appKey: 'U4FAgEDGobU4RT4NUo5E2426',
+        placeholder: '♪( ´▽｀)来啊来啊！～',
+        avatar:'mm',
+        meta:guest,
+        pageSize:'10' || 10,
+        visitor: false
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function showTime(Counter) {
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
+        .done(function ({ results }) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function ({ responseJSON }) {
+          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
+        });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "NrTJIhySTK8ExpFSRePvtUIg-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "NrTJIhySTK8ExpFSRePvtUIg-gzGzoHsz",
+                'X-LC-Key': "U4FAgEDGobU4RT4NUo5E2426",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          if ($('.post-title-link').length >= 1) {
+            showTime(Counter);
+          }
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
