@@ -137,7 +137,7 @@
 
 
 
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -208,26 +208,6 @@
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-books">
-          <a href="/books/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
-            
-            阅读
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-movies">
-          <a href="/movies/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-video-camera"></i> <br />
-            
-            电影
           </a>
         </li>
       
@@ -377,9 +357,9 @@
 
 <p>HashSet的一个应用实例，笔试题：</p>
 <p>对于一个字符串，请设计一个高效算法，找到第一次重复出现的字符。<br>给定一个字符串(不一定全为字母)A及它的长度n。请返回第一个重复出现的字符。保证字符串中有重复字符，字符串的长度小于等于500。<br>测试样例：<br>“hjhfjdshfj”,10<br>返回：y</p>
-<a id="more"></a>
+<span id="more"></span>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Soluction</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">char</span> <span class="title">findFirstRepeat</span><span class="params">(String A, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">		<span class="keyword">char</span> [] a = A.toCharArry();</span><br><span class="line">		HashSet hs = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!hs.add(a[i]))&#123;</span><br><span class="line">				<span class="keyword">return</span> a[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		System.out.println(findFirstRepeat(<span class="string">&quot;asdfsfsd&quot;</span>,<span class="number">11</span>))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Soluction</span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">char</span> <span class="title function_">findFirstRepeat</span><span class="params">(String A, <span class="type">int</span> n)</span>&#123;</span><br><span class="line">		<span class="type">char</span> [] a = A.toCharArry();</span><br><span class="line">		<span class="type">HashSet</span> <span class="variable">hs</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!hs.add(a[i]))&#123;</span><br><span class="line">				<span class="keyword">return</span> a[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		System.out.println(findFirstRepeat(<span class="string">&quot;asdfsfsd&quot;</span>,<span class="number">11</span>))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
