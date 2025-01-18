@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2025/01/17/Lucky+stun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2025/01/17/%E4%BD%BF%E7%94%A8Lucky%E5%92%8Cstun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2025/01/17/Lucky+stun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" itemprop="url">Lucky+stun-plex实现Plex外网访问</a></h1>
+                <a class="post-title-link" href="/2025/01/17/%E4%BD%BF%E7%94%A8Lucky%E5%92%8Cstun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" itemprop="url">使用Lucky和stun-plex实现Plex外网访问</a></h1>
         
 
         <div class="post-meta">
@@ -299,8 +299,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2025/01/17/Lucky+stun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2025/01/17/Lucky+stun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" itemprop="commentCount"></span>
+                <a href="/2025/01/17/%E4%BD%BF%E7%94%A8Lucky%E5%92%8Cstun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2025/01/17/%E4%BD%BF%E7%94%A8Lucky%E5%92%8Cstun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -335,13 +335,48 @@
 <li>使用Lucky的stun协议获取IPv4地址，然后使用Nginx反向代理到Plex的端口。</li>
 <li>使用Cloudflare的重定向功能，将公网IPv4地址重定向到Plex的端口。</li>
 </ul>
-<p>但是问题来了，当我买了一个域名之后，将Nameserver挂到cf之后，发现很多地区把cf墙了。这个方案行不通。</p>
+<p>但是问题来了，当我买了一个域名并将Nameserver挂到cf之后，发现很多地区把cf墙了。这个方案行不通。</p>
 <p>看到<a target="_blank" rel="noopener" href="https://www.nodeseek.com/post-184057-1">这篇文章</a>，他是用plexapi将Lucky获取到的stunIPv4公网端口并通过api实时修改plex中「设置-远程访问-手动修改端口」的设置：</p>
 <p>但是这样也会存在问题：<br>当Plex走梯子时，Plex的公网IPv4地址会发生变化，在Plex的设置中修改端口虽然正确，但是Plex获取到的公网IP是梯子IP，无法访问。</p>
-<p>因此我们使用Plex的「设置-网络-自定义服务器访问URL」，即custom URL的功能，将Lucky获取到的stunIPv4公网端口实时修改至Plex，通过custom URL访问。</p>
+<p>因此我们使用Plex的「设置-网络-自定义服务器访问URL」，即custom URL的功能，将Lucky获取到的stunIPv4公网端口实时修改至Plex，通过custom URL访问或Plex自带的官方客户端远程访问。</p>
+<h1 id="使用要求"><a href="#使用要求" class="headerlink" title="使用要求"></a>使用要求</h1><p>STUN 技术允许 NAT1 用户获取公网端口，通过路由端口转发或者 LUCKY 内置转发，将内网服务端口暴露到外网，从而实现内网穿透的目的。</p>
+<p>要求我们使用NAT1类型的路由器，路由器或光猫可以设置端口转发。</p>
 <p>下面是实现步骤：</p>
-<h1 id="尝试Lucky的stun是否可以正常使用"><a href="#尝试Lucky的stun是否可以正常使用" class="headerlink" title="尝试Lucky的stun是否可以正常使用"></a>尝试Lucky的stun是否可以正常使用</h1><p>当我们docker部署完lucky之后，进入左侧「STUN内网穿透」，点击新建穿透规则：</p>
-<p><img src="image/2025-01-18-pic-001.png" alt="image"></p>
+<h1 id="配置Lucky的stun"><a href="#配置Lucky的stun" class="headerlink" title="配置Lucky的stun"></a>配置Lucky的stun</h1><p>Lucky的项目地址：</p>
+<p><a target="_blank" rel="noopener" href="https://lucky666.cn/">https://lucky666.cn/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/gdy666/lucky">https://github.com/gdy666/lucky</a></p>
+<p>当我们docker部署完Lucky之后，进入左侧「STUN内网穿透」，点击新建穿透规则：</p>
+<p><img src="/image/2025-01-18-pic-001.png" alt="image"></p>
+<ul>
+<li>穿透类型：选择IPv4-TCP</li>
+<li>穿透通道本地端口：选择空闲没有被占用的端口一个</li>
+<li>目标地址和目标端口选择Plex内网地址和端口</li>
+</ul>
+<p>穿透通道本地端口：此端口用于Lucky的stun协议维持连接使用。如果是光猫拨号，需要设置DMZ主机指向Nas服务器的IP地址；如果是路由器桥接光猫，需要设置端口转发。</p>
+<p>下面我们设置端口转发：</p>
+<p><img src="/image/2025-01-18-pic-003.png" alt="image"></p>
+<p>我是路由器桥接光猫，因此在OpenWrt-防火墙内将18644端口转发至Nas所在的Lucky的stun穿透通道本地端口。</p>
+<p><img src="/image/2025-01-18-pic-004.png" alt="image"></p>
+<p>此时点击保存，使用手机流量通过下面外网ip+端口访问Plex成功，则Lucky的stun穿透配置成功。</p>
+<h1 id="配置plex-stun"><a href="#配置plex-stun" class="headerlink" title="配置plex-stun"></a>配置plex-stun</h1><p>这时候就要用到我写的plex-stun工具了：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/PrentissLiu/plex-stun">https://github.com/PrentissLiu/plex-stun</a></p>
+<p>此代码从上述论坛的代码改动而来，可以部署为docker容器。</p>
+<p>写完代码打包镜像，<code>docker push</code>到docker hub，可费了老大劲啊。下面我们开始部署：</p>
+<p>使用Docker Compose部署：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">version: &#x27;3&#x27;</span><br><span class="line">services:</span><br><span class="line">  plex-stun:</span><br><span class="line">    build: .</span><br><span class="line">    container_name: plex-stun</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;4201:4201&quot;</span><br><span class="line">    volumes:</span><br><span class="line">      - ./token:/app/token</span><br><span class="line">    environment:</span><br><span class="line">      - PLEX_USERNAME=your_username</span><br><span class="line">      - PLEX_PASSWORD=your_password</span><br><span class="line">      - PLEX_URL=http://your_plex_server:32400</span><br><span class="line">    restart: unless-stopped</span><br></pre></td></tr></table></figure>
+
+<p>或者使用Docker命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">    --name plex-stun \</span><br><span class="line">    -p 4201:4201 \</span><br><span class="line">    -v ./token:/app/token \</span><br><span class="line">    -e PLEX_USERNAME=your_username \</span><br><span class="line">    -e PLEX_PASSWORD=your_password \</span><br><span class="line">    -e PLEX_URL=http://your_plex_server:32400 \</span><br><span class="line">    --restart unless-stopped \</span><br><span class="line">    plex-stun:latest</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>PLEX_USERNAME</code>是Plex的用户名；<code>PLEX_PASSWORD</code>是Plex的密码；<code>PLEX_URL</code>是Plex的地址。程序通过登陆Plex来刷新Plex的token，保存到<code>./token/plex_token.json</code>文件中。若token过期，则会自动刷新token。</p>
+<p>部署完成之后我们打开<code>http://your_host:4201</code>, 看到以下界面则表示部署成功：</p>
+<p><img src="/image/2025-01-18-pic-005.png" alt="image"></p>
+<p>我们将其中的自定义URL端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.165:4201/change-custom-url/#&#123;ipAddr&#125;</span><br></pre></td></tr></table></figure>
+
+<p>复制到之前我们创建的Lucky的stun的Webhook中，并填写号接口调用成功包含的字符串等，点击保存。此时Plex的custom URL就配置成功了。</p>
+<p><img src="/image/2025-01-18-pic-002.png" alt="image"></p>
+<p>此时我们打开手机流量，发现可以正常外网访问Plex，而且Plex的custom URL端口会自动更新为Lucky的stun穿透通道本地端口。完结撒花！🎉</p>
 
           
         
@@ -1011,163 +1046,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/prentiss_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Prentiss的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="url">2018 年终总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-31T00:00:00+08:00">
-                2018-12-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="url" rel="index">
-                    <span itemprop="name">年终总结</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>十二月的时候不经意朋友的一句提醒，才知道2019就快到了。这一年过的甚是简单，可活着却不算轻快。这一年有个网络用语「人间不值得」；生命的本质是荒谬，语言的特质是符号。理想和现实差距过大时，才明白世界有他的运行逻辑。适度改变理想，对精神健康有益。</p>
-<p>十月在南京，童童大气和我笑着说「你这纠结的都不应该算事儿」，醍醐灌顶。人活着怕是就要有如此大气。能有所热爱，能有执着的，怎不应当是自我追求和实现。花些时间在凡俗的似是而非和毫无依据的纷扰，到头来不免有空虚和不合逻辑的困扰。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/31/2018%20%E5%81%87%E8%A3%85%E7%9C%8B%E4%BA%86%E4%B8%80%E4%BA%9B%E4%B9%A6%20%7C%20%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1281,6 +1159,163 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/12/31/2018%20%E5%81%87%E8%A3%85%E7%9C%8B%E4%BA%86%E4%B8%80%E4%BA%9B%E4%B9%A6%20%7C%20%E9%98%85%E8%AF%BB%E6%80%BB%E7%BB%93/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/prentiss_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prentiss的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="url">2018 年终总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-31T00:00:00+08:00">
+                2018-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="url" rel="index">
+                    <span itemprop="name">年终总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>十二月的时候不经意朋友的一句提醒，才知道2019就快到了。这一年过的甚是简单，可活着却不算轻快。这一年有个网络用语「人间不值得」；生命的本质是荒谬，语言的特质是符号。理想和现实差距过大时，才明白世界有他的运行逻辑。适度改变理想，对精神健康有益。</p>
+<p>十月在南京，童童大气和我笑着说「你这纠结的都不应该算事儿」，醍醐灌顶。人活着怕是就要有如此大气。能有所热爱，能有执着的，怎不应当是自我追求和实现。花些时间在凡俗的似是而非和毫无依据的纷扰，到头来不免有空虚和不合逻辑的困扰。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/31/2018%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
