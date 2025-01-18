@@ -249,6 +249,146 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2025/01/17/Lucky+stun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/prentiss_avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Prentiss的小屋">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2025/01/17/Lucky+stun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" itemprop="url">Lucky+stun-plex实现Plex外网访问</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2025-01-17T22:40:58+08:00">
+                2025-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2025/01/17/Lucky+stun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2025/01/17/Lucky+stun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近部署了公网IPv6的外网访问，但是Plex的客户端有的时候无法获取到IPv6地址，在中国移动大内网之下又没有公网IPv4，考虑使用Lucky的stun协议来获取公网IPv4地址。但是stun协议获取的IPv4地址的端口号是随机的，一段时间之后无法继续使用。一般情况下我们的解决方案是</p>
+<ul>
+<li>使用Lucky的stun协议获取IPv4地址，然后使用Nginx反向代理到Plex的端口。</li>
+<li>使用Cloudflare的重定向功能，将公网IPv4地址重定向到Plex的端口。</li>
+</ul>
+<p>但是问题来了，当我买了一个域名之后，将Nameserver挂到cf之后，发现很多地区把cf墙了。这个方案行不通。</p>
+<p>看到<a target="_blank" rel="noopener" href="https://www.nodeseek.com/post-184057-1">这篇文章</a>，他是用plexapi将Lucky获取到的stunIPv4公网端口并通过api实时修改plex中「设置-远程访问-手动修改端口」的设置：</p>
+<p>但是这样也会存在问题：<br>当Plex走梯子时，Plex的公网IPv4地址会发生变化，在Plex的设置中修改端口虽然正确，但是Plex获取到的公网IP是梯子IP，无法访问。</p>
+<p>因此我们使用Plex的「设置-网络-自定义服务器访问URL」，即custom URL的功能，将Lucky获取到的stunIPv4公网端口实时修改至Plex，通过custom URL访问。</p>
+<p>下面是实现步骤：</p>
+<h1 id="尝试Lucky的stun是否可以正常使用"><a href="#尝试Lucky的stun是否可以正常使用" class="headerlink" title="尝试Lucky的stun是否可以正常使用"></a>尝试Lucky的stun是否可以正常使用</h1><p>当我们docker部署完lucky之后，进入左侧「STUN内网穿透」，点击新建穿透规则：</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/10/2021%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1648,143 +1788,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/hexo%E5%8F%91%E5%B8%83blog%E6%96%87%E7%AB%A0%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/prentiss_avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Prentiss的小屋">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/06/hexo%E5%8F%91%E5%B8%83blog%E6%96%87%E7%AB%A0%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" itemprop="url">Hexo发布blog文章常用快捷键</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-06T14:32:44+08:00">
-                2018-12-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/06/hexo%E5%8F%91%E5%B8%83blog%E6%96%87%E7%AB%A0%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/12/06/hexo%E5%8F%91%E5%B8%83blog%E6%96%87%E7%AB%A0%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="发布一篇新的博文"><a href="#发布一篇新的博文" class="headerlink" title="发布一篇新的博文"></a>发布一篇新的博文</h2><p><code>hexo new &quot;hexo发布blog文章常用快捷键&quot;</code><br>INFO  Created: ~/Desktop/123/hexo-prentiss/source/_posts/hexo发布blog文章常用快捷键.md</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/12/06/hexo%E5%8F%91%E5%B8%83blog%E6%96%87%E7%AB%A0%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
 
 
           </div>
@@ -1832,7 +1842,7 @@
               
                 <a href="/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1854,7 +1864,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1901,7 +1911,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2024</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-[object Object]"></i>
   </span>
