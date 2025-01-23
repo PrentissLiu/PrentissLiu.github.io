@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2025/01/17/%E4%BD%BF%E7%94%A8Lucky%E5%92%8Cstun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" itemprop="url">使用Lucky和stun-plex实现Plex外网访问</a></h1>
+                <a class="post-title-link" href="/2025/01/17/%E4%BD%BF%E7%94%A8Lucky%E5%92%8Cstun-plex%E5%AE%9E%E7%8E%B0Plex%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE/" itemprop="url">无公网IPv4条件下使用Lucky和stun-plex实现Plex外网访问</a></h1>
         
 
         <div class="post-meta">
@@ -340,6 +340,16 @@
 <p>但是这样也会存在问题：<br>当Plex走梯子时，Plex的公网IPv4地址会发生变化，在Plex的设置中修改端口虽然正确，但是Plex获取到的公网IP是梯子IP，无法访问。</p>
 <p>因此我们使用Plex的「设置-网络-自定义服务器访问URL」，即custom URL的功能，将Lucky获取到的stunIPv4公网端口实时修改至Plex，通过custom URL访问或Plex自带的官方客户端远程访问。</p>
 <h1 id="使用要求"><a href="#使用要求" class="headerlink" title="使用要求"></a>使用要求</h1><p>STUN 技术允许 NAT1 用户获取公网端口，通过路由端口转发或者 LUCKY 内置转发，将内网服务端口暴露到外网，从而实现内网穿透的目的。</p>
+<p>关于是否仅仅只有NAT1类型路由器可以实现不是很确定，很多NAT2和NAT3类型的路由器都可以实现使用STUN打洞。根据<a target="_blank" rel="noopener" href="https://mao.fan/mynat">这个测试</a>，我自己的网络条件是NAT3类型，仍旧可以实现使用STUN打洞。</p>
+<p>NAT有四个类型：</p>
+<ul>
+<li>NAT1: Full Cone NAT</li>
+<li>NAT2: Address-Restricted Cone NAT</li>
+<li>NAT3: Port-Restricted Cone NAT</li>
+<li>NAT4: Symmetric NAT</li>
+</ul>
+<p>按我的理解所谓「公网IP」和「NAT1」类型的网络是不太一样的。公网IP是指在路由器WAN口获取到全球可以路由到的一个IP地址；而NAT1类型的网络的概念强调内部地址与外部地址的映射。Full Core NAT也就是NAT1是内部地址和外部地址都可以自由映射。可以直接通过路由器转发来将内网服务映射到公网IP上，但是运营商如果在路由器外还有一层内网，那么我们路由器上获取到的IP并不是可以全球路由的地址，而是运营商内网IP。</p>
+<p>简单来说，访问<a target="_blank" rel="noopener" href="https://ip111.cn/">这里</a>可以看到一个IP地址，把它与路由器WAN接口获取到的IP进行比较，如果不一致则说明运营商分配给我们的是运营商的内网。我们的路由器无法获取公网IP。今天我们讲的是无IPv4公网的条件下用STUN协议打洞，将内网服务映射到公网IP的随机端口上。</p>
 <p>要求我们使用NAT1类型的路由器，路由器或光猫可以设置端口转发。</p>
 <p>下面是实现步骤：</p>
 <h1 id="配置Lucky的stun"><a href="#配置Lucky的stun" class="headerlink" title="配置Lucky的stun"></a>配置Lucky的stun</h1><p>Lucky的项目地址：</p>
